@@ -5,11 +5,12 @@ services:
     platform: linux/x86_64
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: nandemo
-      MYSQL_USER: nandemo
-      MYSQL_PASSWORD: nandemo
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: test
       TZ: 'Asia/Tokyo'
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+
   web:
     build: .
     volumes:
@@ -20,3 +21,12 @@ services:
       - "8070:8070"
     depends_on:
       - db
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=root
