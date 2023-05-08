@@ -7,4 +7,4 @@ class Product(models.Model):
     price = models.IntegerField()
 
     def __str__(self):
-        return self.name # admin画面で表示される文字列
+        return "{}({})".format(self.name, self.id) # admin画面で表示される文字列
