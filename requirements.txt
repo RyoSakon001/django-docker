@@ -3,3 +3,4 @@ mysqlclient
 djangorestframework==3.14
 django-filter==22.1
 django-cors-headers
+drf-spectacular
